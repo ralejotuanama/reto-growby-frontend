@@ -1,0 +1,62 @@
+<div class="container">
+    <h1>Gestión de Préstamos</h1>
+  
+    <!-- Formulario para registrar préstamo -->
+    <form [formGroup]="prestamoForm" (ngSubmit)="savePrestamo()">
+      <div class="mb-3">
+        <label for="fechaPrestamo" class="form-label">Fecha de Préstamo</label>
+        <input type="date" id="fechaPrestamo" formControlName="fechaPrestamo" class="form-control" />
+      </div>
+  
+      <div class="mb-3">
+        <label for="fechaDevolucion" class="form-label">Fecha de Devolución</label>
+        <input type="date" id="fechaDevolucion" formControlName="fechaDevolucion" class="form-control" />
+      </div>
+  
+      <div class="mb-3" formGroupName="libro">
+        <label for="libroId" class="form-label">Seleccionar Libro</label>
+        <select id="libroId" formControlName="id" class="form-select">
+          <option value="" disabled selected>Seleccione un libro</option>
+          <option *ngFor="let libro of libros" [value]="libro.id">
+            {{ libro.titulo }}
+          </option>
+        </select>
+      </div>
+  
+
+    
+  
+      <div class="mb-3">
+        <label for="estado" class="form-label">Estado</label>
+        <select id="estado" formControlName="estado" class="form-select">
+          <option value="Activo">Activo</option>
+          <option value="Finalizado">Finalizado</option>
+        </select>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="!prestamoForm.valid">Guardar</button>
+    </form>
+  
+    <hr />
+  
+    <!-- Tabla para listar préstamos -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Fecha de Préstamo</th>
+          <th>Fecha de Devolución</th>
+          <th>Libro</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prestamo of prestamos">
+          <td>{{ prestamo.fechaPrestamo }}</td>
+          <td>{{ prestamo.fechaDevolucion }}</td>
+          <td>{{ prestamo.libro.titulo}}</td>
+          <td>{{ prestamo.estado }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

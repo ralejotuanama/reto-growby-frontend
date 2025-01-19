@@ -1,0 +1,60 @@
+<div class="container">
+    <h1>Gestión de Libros</h1>
+  
+    <form [formGroup]="libroForm" (ngSubmit)="saveLibro()">
+      <input type="hidden" formControlName="id" />
+      <div class="mb-3">
+        <label for="titulo" class="form-label">Título</label>
+        <input type="text" id="titulo" formControlName="titulo" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="autor" class="form-label">Autor</label>
+        <input type="text" id="autor" formControlName="autor" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="isbn" class="form-label">ISBN</label>
+        <input type="text" id="isbn" formControlName="isbn" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="fechaPublicacion" class="form-label">Fecha de Publicación</label>
+        <input type="date" id="fechaPublicacion" formControlName="fechaPublicacion" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="estado" class="form-label">Estado</label>
+        <select id="estado" formControlName="estado" class="form-control">
+          <option value="Disponible">Disponible</option>
+          <option value="No disponible">No disponible</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+  
+    <hr />
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Autor</th>
+          <th>ISBN</th>
+          <th>Fecha de Publicación</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let libro of libros">
+          <td>{{ libro.titulo }}</td>
+          <td>{{ libro.autor }}</td>
+          <td>{{ libro.isbn }}</td>
+          <td>{{ libro.fechaPublicacion }}</td>
+          <td>{{ libro.estado }}</td>
+          <td>
+            <button class="btn btn-warning btn-sm" (click)="editLibro(libro)">Editar</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteLibro(libro.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,0 +1,57 @@
+<div class="container">
+    <h1>Gestión de Autores</h1>
+  
+    <form [formGroup]="autorForm" (ngSubmit)="saveAutor()">
+      <input type="hidden" formControlName="id" />
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input
+          type="text"
+          id="nombre"
+          formControlName="nombre"
+          class="form-control"
+          [class.is-invalid]="autorForm.get('nombre')?.invalid && autorForm.get('nombre')?.touched"
+        />
+        <div *ngIf="autorForm.get('nombre')?.touched && autorForm.get('nombre')?.invalid" class="invalid-feedback">
+          <span *ngIf="autorForm.get('nombre')?.errors?.['required']">El nombre es obligatorio.</span>
+          <span *ngIf="autorForm.get('nombre')?.errors?.['minlength']">Debe tener al menos 3 caracteres.</span>
+        </div>
+        
+      </div>
+      <div class="mb-3">
+        <label for="nacionalidad" class="form-label">Nacionalidad</label>
+        <input type="text" id="nacionalidad" formControlName="nacionalidad" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+        <input type="date" id="fechaNacimiento" formControlName="fechaNacimiento" class="form-control" />
+      </div>
+      <button type="submit" class="btn btn-primary">{{ editMode ? 'Actualizar' : 'Guardar' }}</button>
+      <button type="button" class="btn btn-secondary" (click)="resetForm()" *ngIf="editMode">Cancelar</button>
+    </form>
+  
+    <hr />
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Nacionalidad</th>
+          <th>Fecha de Nacimiento</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let autor of autores">
+          <td>{{ autor.nombre }}</td>
+          <td>{{ autor.nacionalidad }}</td>
+          <td>{{ autor.fechaNacimiento }}</td>
+          <td>
+            <button class="btn btn-warning btn-sm" (click)="editAutor(autor)">Editar</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteAutor(autor.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
