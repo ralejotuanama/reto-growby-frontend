@@ -141,6 +141,7 @@ bash
 git commit -m "Agrega nueva funcionalidad"
 Haz un push a la rama:
 
+
 git push origin feature/nueva-funcionalidad
 Abre un Pull Request en GitHub.
 Autor
