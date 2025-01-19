@@ -1,59 +1,147 @@
-# BibliotecaFrontend
+Biblioteca Frontend
+Este es el frontend de un sistema de gestión de biblioteca desarrollado en Angular. La aplicación consume la API RESTful del backend para gestionar libros, autores y préstamos.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.4.
+Características
+Gestión de Libros:
+Agregar, editar y eliminar libros.
+Listar libros con paginación.
 
-## Development server
+Gestión de Autores:
+Agregar, editar y eliminar autores.
+Listar autores.
+Gestión de Préstamos:
+Registrar nuevos préstamos.
+Listar todos los préstamos.
 
-To start a local development server, run:
+Dashboard:
+Resumen del total de libros, autores y préstamos.
+Interfaz moderna y responsiva con Bootstrap.
 
-```bash
+Requisitos Previos
+Node.js v16 o superior
+Angular CLI v16 o superior
+
+Backend de Biblioteca en ejecución (consulta el README del backend para configurarlo).
+
+Instalación y Configuración
+
+1. Clonar el Repositorio
+bash
+Copiar
+git clone https://github.com/ralejotuanama/reto-growby-frontend.git
+
+2. Instalar Dependencias
+bash
+Copiar
+npm install
+
+3. Configurar el Archivo environment.ts
+Edita el archivo src/environments/environment.ts para configurar la URL del backend:
+
+
+export const environment = {
+  production: false,
+  apiBaseUrl: 'http://localhost:8080/api' // Cambia según la URL del backend
+};
+
+Ejecución
+1. Modo de Desarrollo
+bash
+Copiar
 ng serve
-```
+Accede a la aplicación en: http://localhost:4200.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+2. Generar una Build para Producción
+bash
+Copiar
+ng build --prod
+Los archivos compilados estarán en la carpeta dist/biblioteca-frontend.
 
-## Code scaffolding
+Estructura del Proyecto
+ruby
+Copiar
+src/
+├── app/
+│   ├── components/
+│   │   ├── libros/        # Componentes relacionados con libros
+│   │   ├── autores/       # Componentes relacionados con autores
+│   │   ├── prestamos/     # Componentes relacionados con préstamos
+│   │   └── dashboard/     # Componentes del dashboard
+│   ├── services/          # Servicios para consumir la API REST
+│   ├── app-routing.module.ts  # Configuración de rutas
+│   ├── app.module.ts          # Módulo principal de la aplicación
+│   └── ...
+├── assets/                 # Recursos estáticos (imágenes, CSS, etc.)
+├── environments/           # Configuración de entornos (desarrollo y producción)
+└── index.html              # Punto de entrada de la aplicación
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Componentes Principales
+Libros
+Ruta: /libros
+Funcionalidades:
+Listar libros con paginación.
+Agregar, editar y eliminar libros.
 
-```bash
-ng generate component component-name
-```
+Autores
+Ruta: /autores
+Funcionalidades:
+Listar autores.
+Agregar, editar y eliminar autores.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Préstamos
+Ruta: /prestamos
+Funcionalidades:
+Registrar un préstamo seleccionando un libro.
+Listar todos los préstamos.
 
-```bash
-ng generate --help
-```
+Dashboard
+Ruta: /dashboard
+Funcionalidades:
+Mostrar el total de libros, autores y préstamos.
+Comandos Útiles
 
-## Building
+Ejecutar la aplicación:
 
-To build the project run:
+bash
+Copiar
+ng serve
+Generar build para producción:
 
-```bash
-ng build
-```
+bash
+Copiar
+ng build --prod
+Linter para el código:
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+bash
+Copiar
+ng lint
+Estilos
+Esta aplicación utiliza Bootstrap 5 para la interfaz. Si deseas personalizar los estilos:
 
-## Running unit tests
+Edita los archivos CSS en src/styles.css.
+Asegúrate de tener cargado Bootstrap en angular.json:
+json
+Copiar
+"styles": [
+  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "src/styles.css"
+]
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Contribuir
 
-```bash
-ng test
-```
+Crea una rama nueva:
+bash
+Copiar
+git checkout -b feature/nueva-funcionalidad
 
-## Running end-to-end tests
+Realiza tus cambios y haz un commit:
+bash
 
-For end-to-end (e2e) testing, run:
 
-```bash
-ng e2e
-```
+git commit -m "Agrega nueva funcionalidad"
+Haz un push a la rama:
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+git push origin feature/nueva-funcionalidad
+Abre un Pull Request en GitHub.
+Autor
+Ronald Alejo Tuanama
