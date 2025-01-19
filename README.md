@@ -1,3 +1,8 @@
+
+# Estructura del Proyecto
+
+```plaintext
+
 Biblioteca Frontend
 Este es el frontend de un sistema de gestión de biblioteca desarrollado en Angular. La aplicación consume la API RESTful del backend para gestionar libros, autores y préstamos.
 
